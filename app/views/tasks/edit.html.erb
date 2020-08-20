@@ -1,0 +1,15 @@
+<div class=wrapper>
+  <div class="title">
+    <h1>新規タスク編集</h1>
+  </div>
+  <div class="task-edit">
+    <%= form_with(model: @task, local: true) do |f| %>
+      <%= f.label :content, 'タスク編集' %>
+      <%= f.text_field :content %>
+    
+      <%= f.submit '編集' %>
+    <% end %>
+    
+    <%= link_to '一覧に戻る', tasks_path %>
+  </div>
+</div>
