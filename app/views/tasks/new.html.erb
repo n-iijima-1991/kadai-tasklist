@@ -3,11 +3,8 @@
     <h1>新規タスク作成</h1>
   </div>
   <div class="task-new">
-    <%= form_with(model: @task, local: true) do |f| %>
-      <%= f.label :content, '新規タスク' %>
-      <%= f.text_field :content %>
-    
-      <%= f.submit '登録' %>
-    <% end %>
+    <%= render 'form', task: @task %>
+
+    <%= link_to '一覧に戻る', tasks_path %>
   </div>
 </div>
