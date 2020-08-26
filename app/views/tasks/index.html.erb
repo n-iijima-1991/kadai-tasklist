@@ -1,13 +1,25 @@
-<div class=wrapper>
-  <div class="title">
-    <h1>タスク一覧</h1>
+<% if logged_in? %>
+  <p>ログイン完了ユーザ: <%= current_user.name %></p>
+  <div class=wrapper>
+    <div class="title">
+      <h1>タスク一覧</h1>
+    </div>
+    <div class="task-index">
+      <ul>
+        <% @tasks.each do |task| %>
+          <li><%= link_to task.content, task %> : <%= link_to task.status, task %></li>
+        <% end %>
+      </ul>
+      <%= link_to '新規タスクの登録', new_task_path, class: 'btn btn-lg btn-primary' %>
+      <%= link_to 'ユーザー登録', signup_path, class: 'btn btn-lg btn-primary' %>
+    </div>
   </div>
-  <div class="task-index">
-    <ul>
-      <% @tasks.each do |task| %>
-        <li><%= link_to task.content, task %> : <%= link_to task.status, task %></li>
-      <% end %>
-    </ul>
-    <%= link_to '新規タスクの登録', new_task_path %>
+    
+<% else %>
+  <div class="center jumbotron">
+    <div class="text-center">
+      <h1>課題タスクリスト</h1>
+      <%= link_to 'ユーザー登録', signup_path, class: 'btn btn-lg btn-primary' %>
+    </div>
   </div>
-</div>
+<% end %>
