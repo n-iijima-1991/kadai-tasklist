@@ -2,6 +2,11 @@
   <div class="title">
     <h1>新規タスク作成</h1>
   </div>
+  
+    <%= form_with(model: @task, local: true) do |f| %>
+      <%= render 'layouts/error_messages', model: f.object %>
+    <% end %>
+      
   <div class="task-new">
     <%= render 'form', task: @task %>
 
